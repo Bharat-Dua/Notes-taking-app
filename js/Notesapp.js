@@ -43,7 +43,7 @@ function showNotes() {
   if (notesObj.length != 0) {
     notesElem.innerHTML = html;
   } else {
-    notesElem.innerHTML = `Nothing to show click on "Add notes" to show the notes`;
+    notesElem.innerHTML = `Nothing to show here click on "Add notes" to show the notes`;
   }
 }
 // Delete function
