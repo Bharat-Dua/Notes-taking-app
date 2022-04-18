@@ -1,4 +1,5 @@
 console.log("this is fire");
+showNotes();
 
 let addBtn = document.getElementById("addBtn");
 
@@ -31,7 +32,8 @@ function showNotes() {
           <div class="card-body">
             <h5 class="card-title"> Note ${index + 1}</h5>
             <p class="card-text">${element}</p>
-            <button class="btn btn-primary">Delete Note </button>
+            <button onclick = "deleteNotes(this.id)"  id = "${index}" class="btn btn-primary" >Delete Note </button>
+             
           </div>
         </div>
     </div>
@@ -40,5 +42,19 @@ function showNotes() {
   let notesElem = document.getElementById("notes");
   if (notesObj.length != 0) {
     notesElem.innerHTML = html;
+  } else {
+    notesElem.innerHTML = `Nothing to show click on "Add notes" to show the notes`;
   }
+}
+// Delete function
+function deleteNotes(index) {
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+  notesObj.splice(index, 1);
+  localStorage.setItem("notes", JSON.stringify(notesObj));
+  showNotes();
 }
