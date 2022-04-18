@@ -1,20 +1,20 @@
-console.log("this is fire");
+// This is notes taking app which does it takes the notes from your local Storage and display it which is you can easily Add,delete,search notes
+// Display all the notes
 showNotes();
-
+// Add note button
 let addBtn = document.getElementById("addBtn");
-
 addBtn.addEventListener("click", (e) => {
   let addTxt = document.getElementById("addTxt");
   let notes = localStorage.getItem("notes");
   if (notes == null) {
+    // it's checking the condition that if there is any  notes in local storage
     notesObj = [];
   } else {
     notesObj = JSON.parse(notes);
   }
-  notesObj.push(addTxt.value);
+  notesObj.push(addTxt.value);         
   localStorage.setItem("notes", JSON.stringify(notesObj));
   addTxt.value = "";
-  //   console.log(notes);
   showNotes();
 });
 function showNotes() {
@@ -58,3 +58,18 @@ function deleteNotes(index) {
   localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
 }
+// Search function
+let search = document.getElementById("searchTxt");
+search.addEventListener("input", () => {
+  let inputVal = search.value.toLowerCase();
+
+  let notesCard = document.getElementsByClassName("noteCard");
+  Array.from(notesCard).forEach((element) => {
+    let cardTxt = element.getElementsByTagName("p")[0].innerText;
+    if (cardTxt.includes(inputVal)) {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
+  });
+});
