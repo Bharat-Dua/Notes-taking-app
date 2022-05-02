@@ -15,7 +15,7 @@ addBtn.addEventListener("click", (e) => {
   }
   let myObj = {
     title: addTitle.value,
-    text: addTxt.value,
+    text: addTxt.value
   };
   notesObj.push(myObj);
   localStorage.setItem("notes", JSON.stringify(notesObj));
