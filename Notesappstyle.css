@@ -1,0 +1,10 @@
+body {
+  background-color: black;
+  background-color: rgb(149, 136, 136);
+  color: black;
+}
+
+.noteCard {
+  margin: 0 10px 20px 0;
+  width: calc(33.33% - 10px);
+}
